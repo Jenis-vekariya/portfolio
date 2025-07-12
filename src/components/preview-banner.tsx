@@ -24,14 +24,14 @@ export function PreviewBanner({ name, previews, liveUrl, style, onMouseLeave }: 
             <div className="flex items-center justify-center gap-8 h-full">
                 {previews.map((preview) => (
                     <div key={preview.name} className="flex flex-col items-center justify-center gap-4 text-center">
-                        <div className="relative w-[400px] h-[300px] rounded-md overflow-hidden border bg-muted/30 flex items-center justify-center">
+                        <div className="relative w-[250px] h-[188px] rounded-md overflow-hidden border bg-muted/30 flex items-center justify-center">
                             <Image
                                 src={preview.url}
                                 alt={`Preview of ${preview.name}`}
-                                width={400}
-                                height={300}
+                                width={250}
+                                height={188}
                                 className="object-cover w-full h-full"
-                                sizes="400px"
+                                sizes="250px"
                             />
                         </div>
                         <h4 className="text-sm font-medium text-foreground">{preview.name}</h4>
