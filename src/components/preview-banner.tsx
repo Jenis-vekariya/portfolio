@@ -10,15 +10,13 @@ export type PreviewBannerProps = {
   previews: { name: string; url: string }[];
   liveUrl: string;
   style?: React.CSSProperties;
-  onMouseLeave?: () => void;
 };
 
-export function PreviewBanner({ name, previews, liveUrl, style, onMouseLeave }: PreviewBannerProps) {
+export function PreviewBanner({ name, previews, liveUrl, style }: PreviewBannerProps) {
   return (
     <div
       className="absolute left-0 right-0 z-10 mx-auto w-[calc(100%+2rem)] -translate-x-4 p-4 overflow-hidden"
       style={style}
-      onMouseLeave={onMouseLeave}
     >
         <div className="bg-background border rounded-lg shadow-2xl h-full w-full flex flex-col justify-center transition-all duration-300 animate-in fade-in slide-in-from-bottom-5 p-6">
             <div className="flex items-center justify-center gap-8 h-full">
