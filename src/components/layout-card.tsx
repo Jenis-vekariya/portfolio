@@ -1,15 +1,11 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Eye } from 'lucide-react';
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { cn } from '@/lib/utils';
 
 type LayoutCardProps = {
   imageUrl: string;
@@ -61,3 +57,5 @@ export function LayoutCard({ imageUrl, imageHint, comingSoon = false }: LayoutCa
     </div>
   );
 }
+
+    

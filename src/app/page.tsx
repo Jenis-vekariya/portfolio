@@ -1,6 +1,6 @@
 
 'use client';
-import { useState, useRef, useEffect, MouseEvent } from 'react';
+import { useState, useRef, MouseEvent } from 'react';
 import { LayoutCard } from '@/components/layout-card';
 import { Footer } from '@/components/footer';
 import { Header } from '@/components/header';
@@ -13,11 +13,11 @@ const blogLayouts = [
     description: 'Elegant and clean for fashion.', 
     imageUrl: 'https://storage.googleapis.com/project-isa-resources/flexiblog/lumineux-v1.png', 
     imageHint: 'beauty fashion',
-    liveUrl: 'https://lumineux-beauty.vercel.app',
+    liveUrl: 'https://lumineux-beauty.vercel.app/',
     previews: [
       { name: 'Homepage v1', url: 'https://storage.googleapis.com/project-isa-resources/flexiblog/lumineux-v1.png' },
       { name: 'Homepage v2', url: 'https://storage.googleapis.com/project-isa-resources/flexiblog/lumineux-v2.png' },
-      { name: 'Homepage v3', url: 'https://storage.googleapis.com/project-isa-resources/flexiblog/lumineux-v3.png' },
+      { name: 'Homepage v3', url: '/images/lumineux-v3.png' },
     ]
   },
   { name: 'Education', description: 'For modern learning platforms.', imageUrl: 'https://images.unsplash.com/photo-1622575402739-6e9edf8073c4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxlZHVjYXRpb24lMjBsZWFybmluZ3xlbnwwfHx8fDE3NTIzMjYzNDh8MA&ixlib=rb-4.1.0&q=80&w=1080', imageHint: 'education learning', comingSoon: true },
@@ -91,11 +91,13 @@ export default function Home() {
               {blogLayouts.map((layout) => (
                 <div 
                   key={layout.name} 
-                  className="flex flex-col items-center gap-4 cursor-pointer"
+                  className="flex flex-col items-center gap-4"
                   onClick={(e) => handleLayoutClick(e, layout, blogGridRef)}
                 >
                   <h3 className="text-xl font-semibold tracking-tight">{layout.name}</h3>
-                  <LayoutCard imageUrl={layout.imageUrl} imageHint={layout.imageHint} comingSoon={layout.comingSoon} />
+                  <div className="w-full cursor-pointer">
+                    <LayoutCard imageUrl={layout.imageUrl} imageHint={layout.imageHint} comingSoon={layout.comingSoon} />
+                  </div>
                 </div>
               ))}
             </div>
@@ -123,11 +125,13 @@ export default function Home() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
               {postLayouts.map((layout) => (
                 <div key={layout.name} 
-                  className="flex flex-col items-center gap-4 cursor-pointer"
+                  className="flex flex-col items-center gap-4"
                   onClick={(e) => handleLayoutClick(e, layout, postGridRef)}
                 >
                   <h3 className="text-xl font-semibold tracking-tight">{layout.name}</h3>
-                   <LayoutCard imageUrl={layout.imageUrl} imageHint={layout.imageHint} comingSoon={layout.comingSoon} />
+                  <div className="w-full cursor-pointer">
+                    <LayoutCard imageUrl={layout.imageUrl} imageHint={layout.imageHint} comingSoon={layout.comingSoon} />
+                  </div>
                 </div>
               ))}
             </div>
@@ -141,3 +145,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
