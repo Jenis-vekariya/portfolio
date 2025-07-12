@@ -3,22 +3,32 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { ExternalLink, Eye } from 'lucide-react';
+import { ExternalLink, Eye, X } from 'lucide-react';
+import type { Layout } from '@/types';
 
 export type PreviewBannerProps = {
-  name: string;
-  previews: { name: string; url: string }[];
-  liveUrl: string;
+  layout: Layout;
   style?: React.CSSProperties;
+  onClose: () => void;
 };
 
-export function PreviewBanner({ name, previews, liveUrl, style }: PreviewBannerProps) {
+export function PreviewBanner({ layout, style, onClose }: PreviewBannerProps) {
+  const { name, previews, liveUrl } = layout;
+
+  if (!previews || previews.length === 0) {
+    return null;
+  }
+
   return (
     <div
       className="absolute left-0 right-0 z-10 mx-auto w-[calc(100%+2rem)] -translate-x-4 p-4 overflow-hidden"
       style={style}
     >
-        <div className="bg-background border rounded-lg shadow-2xl h-full w-full flex flex-col justify-center transition-all duration-300 animate-in fade-in slide-in-from-bottom-5 p-6">
+        <div className="bg-background border rounded-lg shadow-2xl h-full w-full flex flex-col justify-center transition-all duration-300 animate-in fade-in slide-in-from-bottom-5 p-6 relative">
+          <Button variant="ghost" size="icon" className="absolute top-4 right-4 h-6 w-6" onClick={onClose}>
+            <X className="h-4 w-4" />
+            <span className="sr-only">Close</span>
+          </Button>
             <div className="flex items-center justify-center gap-8 h-full">
                 {previews.map((preview) => (
                     <div key={preview.name} className="flex flex-col items-center justify-center gap-4 text-center">
@@ -37,7 +47,7 @@ export function PreviewBanner({ name, previews, liveUrl, style }: PreviewBannerP
                 ))}
                 <div className="flex flex-col items-center justify-center gap-4 text-center">
                     <Button asChild className="w-full" size="lg">
-                        <Link href={liveUrl} target="_blank" rel="noopener noreferrer">
+                        <Link href={liveUrl || '#'} target="_blank" rel="noopener noreferrer">
                              <Eye className="mr-2 h-4 w-4" />
                             Live Preview
                             <ExternalLink className="ml-2 h-4 w-4" />
