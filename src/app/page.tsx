@@ -37,9 +37,12 @@ export default function Home() {
         </section>
 
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 md:pb-24 lg:pb-32">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
             {blogLayouts.map((layout) => (
-              <LayoutCard key={layout.name} {...layout} />
+              <div key={layout.name} className="flex flex-col items-center gap-4">
+                <h3 className="text-xl font-semibold tracking-tight">{layout.name}</h3>
+                <LayoutCard imageUrl={layout.imageUrl} imageHint={layout.imageHint} />
+              </div>
             ))}
           </div>
         </section>
@@ -55,9 +58,12 @@ export default function Home() {
         </section>
 
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 md:pb-24 lg:pb-32">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
             {postLayouts.map((layout) => (
-              <LayoutCard key={layout.name} {...layout} />
+              <div key={layout.name} className="flex flex-col items-center gap-4">
+                <h3 className="text-xl font-semibold tracking-tight">{layout.name}</h3>
+                <LayoutCard imageUrl={layout.imageUrl} imageHint={layout.imageHint} />
+              </div>
             ))}
           </div>
         </section>
