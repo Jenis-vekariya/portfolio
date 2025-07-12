@@ -3,8 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { ExternalLink, Eye, Images } from 'lucide-react';
-import { useState } from 'react';
+import { ExternalLink, Eye } from 'lucide-react';
 
 export type PreviewBannerProps = {
   name: string;
@@ -15,56 +14,38 @@ export type PreviewBannerProps = {
 };
 
 export function PreviewBanner({ name, previews, liveUrl, style, onMouseLeave }: PreviewBannerProps) {
-  const [activePreview, setActivePreview] = useState(previews[0].url);
-
   return (
     <div
       className="absolute left-0 right-0 z-10 mx-auto w-[calc(100%+2rem)] -translate-x-4 p-4 overflow-hidden"
       style={style}
       onMouseLeave={onMouseLeave}
     >
-        <div className="bg-background border rounded-lg shadow-2xl h-full w-full flex flex-col transition-all duration-300 animate-in fade-in slide-in-from-bottom-5">
-            <div className="flex-grow p-4 md:p-6 grid grid-cols-1 md:grid-cols-3 gap-6 h-full">
-                <div className="md:col-span-2 relative rounded-md overflow-hidden border bg-muted/30 flex items-center justify-center">
-                     <Image
-                        src={activePreview}
-                        alt={`Preview of ${name}`}
-                        width={800}
-                        height={600}
-                        className="object-contain w-full h-auto p-2"
-                        sizes="(max-width: 768px) 100vw, 66vw"
-                    />
-                </div>
-                <div className="flex flex-col justify-between">
-                    <div>
-                        <h3 className="text-lg font-semibold tracking-tight text-foreground mb-1">
-                            {name}
-                        </h3>
-                        <p className="text-sm text-muted-foreground mb-4">
-                            Select a view below to preview.
-                        </p>
-                        <div className="flex flex-col space-y-2">
-                             {previews.map((preview) => (
-                                <Button
-                                    key={preview.name}
-                                    variant={activePreview === preview.url ? 'secondary' : 'ghost'}
-                                    size="sm"
-                                    className="justify-start"
-                                    onClick={() => setActivePreview(preview.url)}
-                                >
-                                    <Images className="mr-2 h-4 w-4" />
-                                    {preview.name}
-                                </Button>
-                             ))}
+        <div className="bg-background border rounded-lg shadow-2xl h-full w-full flex flex-col justify-center transition-all duration-300 animate-in fade-in slide-in-from-bottom-5 p-6">
+            <div className="flex items-center justify-between gap-8 h-full">
+                {previews.map((preview) => (
+                    <div key={preview.name} className="flex flex-col items-center justify-center gap-4 text-center">
+                        <div className="relative w-[300px] h-[225px] rounded-md overflow-hidden border bg-muted/30 flex items-center justify-center">
+                            <Image
+                                src={preview.url}
+                                alt={`Preview of ${preview.name}`}
+                                width={300}
+                                height={225}
+                                className="object-cover w-full h-full"
+                                sizes="300px"
+                            />
                         </div>
+                        <h4 className="text-sm font-medium text-foreground">{preview.name}</h4>
                     </div>
-                    <Button asChild className="w-full mt-4">
+                ))}
+                <div className="flex flex-col items-center justify-center gap-4 text-center">
+                    <Button asChild className="w-full" size="lg">
                         <Link href={liveUrl} target="_blank" rel="noopener noreferrer">
                              <Eye className="mr-2 h-4 w-4" />
                             Live Preview
-                            <ExternalLink className="ml-auto h-4 w-4" />
+                            <ExternalLink className="ml-2 h-4 w-4" />
                         </Link>
                     </Button>
+                     <p className="text-sm text-muted-foreground w-48">Click to view the live demo in a new tab.</p>
                 </div>
             </div>
         </div>
