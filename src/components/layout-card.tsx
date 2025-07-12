@@ -31,10 +31,6 @@ export function LayoutCard({ name, imageUrl, imageHint, description }: LayoutCar
             </Button>
           </div>
         </div>
-        <CardContent className="p-5 bg-card">
-          <h3 className="font-semibold text-card-foreground text-lg">{name}</h3>
-          <p className="text-sm text-muted-foreground mt-1">{description}</p>
-        </CardContent>
       </Card>
     </Link>
   );
