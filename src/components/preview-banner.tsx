@@ -25,12 +25,13 @@ export function PreviewBanner({ name, previews, liveUrl, style, onMouseLeave }: 
     >
         <div className="bg-background border rounded-lg shadow-2xl h-full w-full flex flex-col transition-all duration-300 animate-in fade-in slide-in-from-bottom-5">
             <div className="flex-grow p-4 md:p-6 grid grid-cols-1 md:grid-cols-3 gap-6 h-full">
-                <div className="md:col-span-2 relative rounded-md overflow-hidden border bg-muted/30">
+                <div className="md:col-span-2 relative rounded-md overflow-hidden border bg-muted/30 flex items-center justify-center">
                      <Image
                         src={activePreview}
                         alt={`Preview of ${name}`}
-                        fill
-                        className="object-contain object-center p-2"
+                        width={800}
+                        height={600}
+                        className="object-contain w-full h-auto p-2"
                         sizes="(max-width: 768px) 100vw, 66vw"
                     />
                 </div>
