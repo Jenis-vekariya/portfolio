@@ -11,7 +11,7 @@ const blogLayouts = [
   { 
     name: 'Beauty', 
     description: 'Elegant and clean for fashion.', 
-    imageUrl: 'https://images.unsplash.com/photo-1735220984901-13ca4b5c7e59?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8YmVhdXR5JTIwZmFzaGlvbnxlbnwwfHx8fDE3NTIzMjYzNDh8MA&ixlib=rb-4.1.0&q=80&w=1080', 
+    imageUrl: 'https://storage.googleapis.com/project-isa-resources/flexiblog/lumineux-v1.png', 
     imageHint: 'beauty fashion',
     liveUrl: 'https://lumineux-beauty.vercel.app',
     previews: [
@@ -65,8 +65,8 @@ export default function Home() {
     setBannerStyle({ top: `${top}px`, height: `${height}px` });
     setActiveBanner({
       name: layout.name,
-      previews: layout.previews || [],
-      liveUrl: layout.liveUrl || '#',
+      previews: 'previews' in layout ? layout.previews || [] : [],
+      liveUrl: 'liveUrl' in layout ? layout.liveUrl || '#' : '#',
       onMouseLeave: handleMouseLeave
     });
   };
@@ -124,7 +124,7 @@ export default function Home() {
                 </div>
               ))}
             </div>
-            {activeBanner && blogGridRef.current && (
+            {activeBanner && activeBanner.previews.length > 0 && blogGridRef.current && (
               <div onMouseEnter={handleBannerEnter} onMouseLeave={handleMouseLeave}>
                  <PreviewBanner {...activeBanner} style={bannerStyle} />
               </div>
@@ -159,7 +159,7 @@ export default function Home() {
                 </div>
               ))}
             </div>
-             {activeBanner && postGridRef.current && (
+             {activeBanner && activeBanner.previews.length > 0 && postGridRef.current && (
               <div onMouseEnter={handleBannerEnter} onMouseLeave={handleMouseLeave}>
                  <PreviewBanner {...activeBanner} style={bannerStyle} />
               </div>
@@ -171,3 +171,5 @@ export default function Home() {
     </div>
   );
 }
+
+    

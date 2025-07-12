@@ -14,13 +14,14 @@ export type PreviewBannerProps = {
   onMouseLeave?: () => void;
 };
 
-export function PreviewBanner({ name, previews, liveUrl, style }: PreviewBannerProps) {
+export function PreviewBanner({ name, previews, liveUrl, style, onMouseLeave }: PreviewBannerProps) {
   const [activePreview, setActivePreview] = useState(previews[0].url);
 
   return (
     <div
       className="absolute left-0 right-0 z-10 mx-auto w-[calc(100%+2rem)] -translate-x-4 p-4 overflow-hidden"
       style={style}
+      onMouseLeave={onMouseLeave}
     >
         <div className="bg-background border rounded-lg shadow-2xl h-full w-full flex flex-col transition-all duration-300 animate-in fade-in slide-in-from-bottom-5">
             <div className="flex-grow p-4 md:p-6 grid grid-cols-1 md:grid-cols-3 gap-6 h-full">
@@ -69,3 +70,5 @@ export function PreviewBanner({ name, previews, liveUrl, style }: PreviewBannerP
     </div>
   );
 }
+
+    
