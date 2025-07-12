@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Eye } from 'lucide-react';
 
@@ -13,8 +13,8 @@ type LayoutCardProps = {
 
 export function LayoutCard({ name, imageUrl, imageHint, description }: LayoutCardProps) {
   return (
-    <Link href="#" className="group block outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-2xl">
-      <Card className="overflow-hidden rounded-2xl transition-all duration-300 ease-in-out group-hover:shadow-2xl group-hover:-translate-y-1">
+    <Link href="#" className="group block outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-lg">
+      <Card className="overflow-hidden rounded-lg transition-all duration-300 ease-in-out group-hover:shadow-xl group-hover:-translate-y-1 h-full flex flex-col">
         <div className="relative aspect-[4/3] w-full">
           <Image
             src={imageUrl}
@@ -24,13 +24,19 @@ export function LayoutCard({ name, imageUrl, imageHint, description }: LayoutCar
             data-ai-hint={imageHint}
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
           />
-          <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-            <Button variant="secondary" size="sm" tabIndex={-1}>
+        </div>
+        <CardHeader>
+          <CardTitle>{name}</CardTitle>
+        </CardHeader>
+        <CardContent className="flex-grow">
+          <p className="text-muted-foreground text-sm">{description}</p>
+        </CardContent>
+        <CardFooter>
+            <Button variant="secondary" size="sm" className="w-full">
               <Eye className="mr-2 h-4 w-4" />
               Live Preview
             </Button>
-          </div>
-        </div>
+        </CardFooter>
       </Card>
     </Link>
   );
