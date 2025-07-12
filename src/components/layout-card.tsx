@@ -13,7 +13,7 @@ type LayoutCardProps = {
 export function LayoutCard({ name, imageUrl, imageHint }: LayoutCardProps) {
   return (
     <Link href="#" className="group block outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-lg">
-      <Card className="overflow-hidden transition-all duration-300 ease-in-out group-hover:shadow-xl group-hover:-translate-y-1">
+      <Card className="overflow-hidden transition-all duration-300 ease-in-out group-hover:shadow-xl group-hover:scale-105">
         <div className="relative aspect-[4/3] w-full">
           <Image
             src={imageUrl}
@@ -21,7 +21,7 @@ export function LayoutCard({ name, imageUrl, imageHint }: LayoutCardProps) {
             fill
             className="object-cover"
             data-ai-hint={imageHint}
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
           />
           <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
             <Button variant="secondary" size="sm" tabIndex={-1}>

@@ -12,7 +12,7 @@ export function Footer() {
             <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">Privacy Policy</Link>
           </div>
           <p className="text-sm text-muted-foreground order-first md:order-none">
-            &copy; 2025 Layout Lab
+            &copy; 2025 FlexiBlog
           </p>
           <div className="flex space-x-5">
             <Link href="#" aria-label="Twitter" className="outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm">
