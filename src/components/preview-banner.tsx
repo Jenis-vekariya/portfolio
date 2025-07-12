@@ -70,5 +70,3 @@ export function PreviewBanner({ name, previews, liveUrl, style, onMouseLeave }: 
     </div>
   );
 }
-
-    
