@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { Footer } from '@/components/footer';
 import { Header } from '@/components/header';
-import { Separator } from '@/components/ui/separator';
+import { Separator } from '@/components/ui/layout/separator';
 import { PreviewBanner } from '@/components/preview-banner';
 import { LayoutGrid } from '@/components/layout-grid';
 import { blogLayouts, postLayouts } from '@/data/layouts';
@@ -13,7 +13,7 @@ export default function Home() {
   const [bannerStyle, setBannerStyle] = useState<React.CSSProperties>({});
   
   const handleLayoutClick = (layout: Layout, cardElement: HTMLDivElement) => {
-    if (layout.comingSoon) {
+    if (layout.comingSoon || !layout.previews) {
       setActiveLayout(null);
       return;
     }

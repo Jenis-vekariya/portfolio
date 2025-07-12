@@ -1,11 +1,11 @@
 import Image from 'next/image';
-import { Card } from '@/components/ui/card';
+import { Card } from '@/components/ui/data-display/card';
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
+} from "@/components/ui/data-display/tooltip";
 
 type LayoutCardProps = {
   imageUrl: string;

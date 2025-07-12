@@ -2,7 +2,7 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/forms/button';
 import { ExternalLink, Eye, X } from 'lucide-react';
 import type { Layout } from '@/types';
 
@@ -32,14 +32,14 @@ export function PreviewBanner({ layout, style, onClose }: PreviewBannerProps) {
             <div className="flex items-center justify-center gap-8 h-full">
                 {previews.map((preview) => (
                     <div key={preview.name} className="flex flex-col items-center justify-center gap-4 text-center">
-                        <div className="relative w-[250px] h-[188px] rounded-md overflow-hidden border bg-muted/30 flex items-center justify-center">
+                        <div className="relative w-[300px] h-[225px] rounded-md overflow-hidden border bg-muted/30 flex items-center justify-center">
                             <Image
                                 src={preview.url}
                                 alt={`Preview of ${preview.name}`}
-                                width={250}
-                                height={188}
+                                width={300}
+                                height={225}
                                 className="object-cover w-full h-full"
-                                sizes="250px"
+                                sizes="300px"
                             />
                         </div>
                         <h4 className="text-sm font-medium text-foreground">{preview.name}</h4>
