@@ -168,7 +168,7 @@ function LayoutCard({
       <Card className="overflow-hidden rounded-lg h-full flex flex-col cursor-not-allowed">
         <div className="relative aspect-[4/3] w-full flex items-center justify-center bg-muted/50 p-4">
            <div 
-             className="absolute inset-0 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 opacity-20"
+             className="absolute inset-0 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 opacity-20 [background-size:200%_200%] animate-gradient-move"
            />
           <h3 className="text-2xl font-bold text-center text-muted-foreground z-10">
             Coming Soon
