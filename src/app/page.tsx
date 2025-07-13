@@ -49,7 +49,6 @@ const blogLayouts: Layout[] = [
     imageUrl:
       'https://images.unsplash.com/photo-1622575402739-6e9edf8073c4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxlZHVjYXRpb24lMjBsZWFybmluZ3xlbnwwfHx8fDE3NTIzMjYzNDh8MA&ixlib=rb-4.1.0&q=80&w=1080',
     imageHint: 'education learning',
-    comingSoon: true,
   },
   {
     name: 'Medical',
@@ -57,7 +56,6 @@ const blogLayouts: Layout[] = [
     imageUrl:
       'https://images.unsplash.com/photo-1581578731565-fcdb660a4639?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxtZWRpY2FsJTIwaGVhbHRofGVufDB8fHx8MTc1MjMyNjM0OHww&ixlib=rb-4.1.0&q=80&w=1080',
     imageHint: 'medical health',
-    comingSoon: true,
   },
   {
     name: 'Agency',
