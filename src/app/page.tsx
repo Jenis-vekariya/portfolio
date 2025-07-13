@@ -163,6 +163,34 @@ function LayoutCard({
   imageHint,
   comingSoon = false,
 }: LayoutCardProps) {
+  if (comingSoon) {
+    const cardContent = (
+      <Card className="overflow-hidden rounded-lg h-full flex flex-col cursor-not-allowed">
+        <div className="relative aspect-[4/3] w-full flex items-center justify-center bg-muted/50 p-4">
+           <div 
+             className="absolute inset-0 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 opacity-20"
+           />
+          <h3 className="text-2xl font-bold text-center text-muted-foreground z-10">
+            Coming Soon
+          </h3>
+        </div>
+      </Card>
+    );
+
+    return (
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <div className="w-full h-full">{cardContent}</div>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>This layout is coming soon!</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+    );
+  }
+
   const cardContent = (
     <Card className="overflow-hidden rounded-lg transition-all duration-300 ease-in-out group-hover:shadow-xl group-hover:-translate-y-1 h-full flex flex-col">
       <div className="relative aspect-[4/3] w-full">
@@ -174,31 +202,9 @@ function LayoutCard({
           data-ai-hint={imageHint}
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
-        {comingSoon && (
-          <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-            <span className="bg-primary text-primary-foreground text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">
-              Coming Soon
-            </span>
-          </div>
-        )}
       </div>
     </Card>
   );
-
-  if (comingSoon) {
-    return (
-      <TooltipProvider>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <div className="w-full cursor-not-allowed">{cardContent}</div>
-          </TooltipTrigger>
-          <TooltipContent>
-            <p>This layout is coming soon!</p>
-          </TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
-    );
-  }
 
   return (
     <div className="group block outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-lg">
@@ -341,7 +347,7 @@ export default function Home() {
                   {layout.name}
                 </h3>
                 <div
-                  className="w-full cursor-pointer"
+                  className="w-full"
                 >
                   <LayoutCard
                     imageUrl={layout.imageUrl}
@@ -389,7 +395,7 @@ export default function Home() {
                 <h3 className="text-xl font-semibold tracking-tight">
                   {layout.name}
                 </h3>
-                <div className="w-full cursor-pointer">
+                <div className="w-full">
                   <LayoutCard
                     imageUrl={layout.imageUrl}
                     imageHint={layout.imageHint}
