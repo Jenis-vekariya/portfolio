@@ -8,7 +8,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="flex items-center justify-center md:justify-start">
              <p className="text-sm text-muted-foreground flex items-center gap-1.5">
-              Made with <Heart className="w-4 h-4 text-red-500" /> by FlexiBlog
+              Made with <Heart className="w-4 h-4 text-red-500" /> by Renderly
             </p>
           </div>
           <div className="flex justify-center space-x-6 text-sm">
@@ -29,7 +29,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-8 pt-8 border-t border-border/50 text-center text-sm text-muted-foreground">
-           &copy; {new Date().getFullYear()} FlexiBlog. All Rights Reserved.
+           &copy; {new Date().getFullYear()} Renderly. All Rights Reserved.
         </div>
       </div>
     </footer>
