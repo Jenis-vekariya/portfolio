@@ -253,7 +253,7 @@ function PreviewBanner({ layout, style, onClose }: PreviewBannerProps) {
               key={preview.name}
               className="group/preview flex flex-col items-center justify-center gap-4 text-center"
             >
-              <div className="relative w-[250px] h-[188px] rounded-lg overflow-hidden border-2 border-transparent group-hover/preview:border-primary transition-all duration-300 shadow-lg group-hover/preview:shadow-2xl">
+              <div className="relative w-[250px] h-[188px] rounded-lg overflow-hidden border-2 border-transparent group-hover/preview:border-primary transition-all duration-300 shadow-md group-hover/preview:shadow-xl">
                 <Image
                   src={preview.url}
                   alt={`Preview of ${preview.name}`}
