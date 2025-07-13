@@ -326,10 +326,10 @@ export default function Home() {
             8 Layouts
           </h2>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter mb-6">
-            Blog Home Page
+            Ready to Use Blog Layouts
           </h1>
           <p className="max-w-3xl mx-auto text-lg md:text-xl text-muted-foreground">
-            Choose the perfect layout for your next blog or website project.
+            Production-ready designs to kickstart your next project.
           </p>
         </section>
 
@@ -375,10 +375,10 @@ export default function Home() {
             6 Layouts
           </h2>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter mb-6">
-            Post Page
+            Ready to Use Post Layouts
           </h1>
           <p className="max-w-3xl mx-auto text-lg md:text-xl text-muted-foreground">
-            Select a post style that best fits your content.
+            Select a beautiful post style that best fits your content.
           </p>
         </section>
 
