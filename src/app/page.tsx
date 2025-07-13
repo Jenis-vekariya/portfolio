@@ -268,8 +268,8 @@ function PreviewBanner({ layout, style, onClose }: PreviewBannerProps) {
             </div>
           ))}
           <div className="flex flex-col items-center justify-center gap-4 text-center ml-4 pl-8 border-l">
-            <Button asChild className="w-full" size="lg">
-              <Link href={liveUrl || '#'} target="_blank" rel="noopener noreferrer">
+            <Button asChild size="lg" className="w-full text-white bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 ease-in-out font-bold text-shadow-sm">
+              <Link href={liveUrl || '#'} target="_blank" rel="noopener noreferrer" className='text-white/90'>
                 <Eye className="mr-2 h-4 w-4" />
                 Live Preview
                 <ExternalLink className="ml-2 h-4 w-4" />
