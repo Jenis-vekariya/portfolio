@@ -304,7 +304,7 @@ export default function Home() {
     
     const top = cardElement.offsetTop;
     const height = cardElement.getBoundingClientRect().height;
-    const bannerHeight = 350; // Fixed height for a more consistent look
+    const bannerHeight = 350;
 
     setBannerStyle({ 
       top: `${top + height / 2 - bannerHeight / 2}px`, 
@@ -316,6 +316,9 @@ export default function Home() {
   const clearActiveLayout = () => {
     setActiveLayout(null);
   };
+
+  const activeLayoutIsBlog = activeLayout && blogLayouts.find(l => l.name === activeLayout.name);
+  const activeLayoutIsPost = activeLayout && postLayouts.find(l => l.name === activeLayout.name);
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -358,8 +361,7 @@ export default function Home() {
               </div>
             ))}
           </div>
-          {activeLayout &&
-            blogLayouts.some((l) => l.name === activeLayout.name) && (
+          {activeLayout && activeLayoutIsBlog && (
               <PreviewBanner
                 layout={activeLayout}
                 style={bannerStyle}
@@ -405,8 +407,7 @@ export default function Home() {
               </div>
             ))}
           </div>
-          {activeLayout &&
-            postLayouts.some((l) => l.name === activeLayout.name) && (
+          {activeLayout && activeLayoutIsPost && (
               <PreviewBanner
                 layout={activeLayout}
                 style={bannerStyle}
