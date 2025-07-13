@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/tooltip';
 import { Footer } from '@/components/footer';
 import { Header } from '@/components/header';
-import { ExternalLink, Eye, X } from 'lucide-react';
+import { ExternalLink, Eye, LayoutTemplate, X } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -218,7 +218,7 @@ type PreviewBannerProps = {
 };
 
 function PreviewBanner({ layout, style, onClose }: PreviewBannerProps) {
-  const { previews, liveUrl } = layout;
+  const { name, previews, liveUrl } = layout;
 
   if (!previews || previews.length === 0) {
     return null;
@@ -229,36 +229,45 @@ function PreviewBanner({ layout, style, onClose }: PreviewBannerProps) {
       className="absolute left-0 right-0 z-10 mx-auto w-[calc(100%+2rem)] -translate-x-4 p-4 overflow-hidden"
       style={style}
     >
-      <div className="bg-background border rounded-lg shadow-2xl h-full w-full flex flex-col justify-center transition-all duration-300 animate-in fade-in slide-in-from-bottom-5 p-6 relative">
+      <div className="bg-gradient-to-br from-background to-muted/50 border rounded-xl shadow-2xl h-full w-full flex flex-col justify-center transition-all duration-500 animate-in fade-in zoom-in-95 p-6 relative">
         <Button
           variant="ghost"
           size="icon"
-          className="absolute top-4 right-4 h-6 w-6"
+          className="absolute top-4 right-4 h-8 w-8 rounded-full bg-black/10 hover:bg-black/20 text-white hover:text-white z-20"
           onClick={onClose}
         >
           <X className="h-4 w-4" />
           <span className="sr-only">Close</span>
         </Button>
+        
+        <div className="text-center mb-6">
+          <h3 className="text-2xl font-bold tracking-tight text-foreground flex items-center justify-center gap-2">
+            <LayoutTemplate className="h-6 w-6 text-primary" />
+            {name} Previews
+          </h3>
+        </div>
+
         <div className="flex items-center justify-center gap-8 h-full">
           {previews.map((preview) => (
             <div
               key={preview.name}
-              className="flex flex-col items-center justify-center gap-4 text-center"
+              className="group/preview flex flex-col items-center justify-center gap-4 text-center"
             >
-              <div className="relative w-[250px] h-[188px] rounded-md overflow-hidden border bg-muted/30 flex items-center justify-center">
+              <div className="relative w-[300px] h-[225px] rounded-lg overflow-hidden border-2 border-transparent group-hover/preview:border-primary transition-all duration-300 shadow-lg group-hover/preview:shadow-2xl">
                 <Image
                   src={preview.url}
                   alt={`Preview of ${preview.name}`}
-                  width={250}
-                  height={188}
-                  className="object-cover w-full h-full"
-                  sizes="250px"
+                  width={300}
+                  height={225}
+                  className="object-cover w-full h-full transition-transform duration-300 group-hover/preview:scale-105"
+                  sizes="300px"
                 />
+                 <div className="absolute inset-0 bg-black/20 opacity-0 group-hover/preview:opacity-100 transition-opacity duration-300" />
               </div>
               <h4 className="text-sm font-medium text-foreground">{preview.name}</h4>
             </div>
           ))}
-          <div className="flex flex-col items-center justify-center gap-4 text-center">
+          <div className="flex flex-col items-center justify-center gap-4 text-center ml-4 pl-8 border-l">
             <Button asChild className="w-full" size="lg">
               <Link href={liveUrl || '#'} target="_blank" rel="noopener noreferrer">
                 <Eye className="mr-2 h-4 w-4" />
@@ -293,9 +302,12 @@ export default function Home() {
     
     const top = cardElement.offsetTop;
     const height = cardElement.getBoundingClientRect().height;
-    const bannerHeight = height + 80;
+    const bannerHeight = 350; // Fixed height for a more consistent look
 
-    setBannerStyle({ top: `${top}px`, height: `${bannerHeight}px`, transform: `translateY(-40px)` });
+    setBannerStyle({ 
+      top: `${top + height / 2 - bannerHeight / 2}px`, 
+      height: `${bannerHeight}px`
+    });
     setActiveLayout(layout);
   };
 
