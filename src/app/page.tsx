@@ -34,13 +34,13 @@ const blogLayouts: Layout[] = [
   {
     name: 'Beauty',
     description: 'Elegant and clean for fashion.',
-    imageUrl: 'https://storage.googleapis.com/project-isa-resources/flexiblog/lumineux-v1.png',
+    imageUrl: 'src/Assets/Images/Edit Raw Image 1.png',
     imageHint: 'beauty fashion',
     liveUrl: 'https://lumineux-beauty.vercel.app/',
     previews: [
-      { name: 'Homepage v1', url: 'https://storage.googleapis.com/project-isa-resources/flexiblog/lumineux-v1.png' },
-      { name: 'Homepage v2', url: 'https://storage.googleapis.com/project-isa-resources/flexiblog/lumineux-v2.png' },
-      { name: 'Homepage v3', url: '/images/lumineux-v3.png' },
+      { name: 'Homepage v1', url: 'src/Assets/Images/Edit Raw Image 1.png' },
+      { name: 'Homepage v2', url: 'src/Assets/Images/edit Raw image 2.png' },
+      { name: 'Homepage v3', url: 'src/Assets/Images/edit Raw image 3.png' },
     ],
   },
   {
