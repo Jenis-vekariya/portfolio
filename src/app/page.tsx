@@ -229,11 +229,11 @@ function PreviewBanner({ layout, style, onClose }: PreviewBannerProps) {
       className="absolute left-0 right-0 z-10 mx-auto w-[calc(100%+2rem)] -translate-x-4 p-4 overflow-hidden"
       style={style}
     >
-      <div className="bg-gradient-to-br from-background to-muted/50 border rounded-xl shadow-2xl h-full w-full flex flex-col justify-center transition-all duration-500 animate-in fade-in zoom-in-95 p-6 relative">
+      <div className="bg-background/90 backdrop-blur-sm border rounded-xl shadow-2xl h-full w-full flex flex-col justify-center transition-all duration-300 animate-in fade-in slide-in-from-top-5 p-6 relative">
         <Button
           variant="ghost"
           size="icon"
-          className="absolute top-4 right-4 h-8 w-8 rounded-full bg-black/10 hover:bg-black/20 text-white hover:text-white z-20"
+          className="absolute top-4 right-4 h-8 w-8 rounded-full bg-background/50 hover:bg-background/80 text-foreground hover:text-foreground z-20"
           onClick={onClose}
         >
           <X className="h-4 w-4" />
