@@ -287,17 +287,26 @@ function PreviewBanner({ layout, style, onClose }: PreviewBannerProps) {
   );
 }
 
+type ActiveLayout = {
+  layout: Layout;
+  type: 'blog' | 'post';
+};
+
 export default function Home() {
-  const [activeLayout, setActiveLayout] = useState<Layout | null>(null);
+  const [activeLayout, setActiveLayout] = useState<ActiveLayout | null>(null);
   const [bannerStyle, setBannerStyle] = useState<React.CSSProperties>({});
 
-  const handleLayoutClick = (layout: Layout, cardElement: HTMLDivElement) => {
+  const handleLayoutClick = (
+    layout: Layout,
+    type: 'blog' | 'post',
+    cardElement: HTMLDivElement
+  ) => {
     if (layout.comingSoon || !layout.previews) {
       setActiveLayout(null);
       return;
     }
 
-    if (activeLayout?.name === layout.name) {
+    if (activeLayout?.layout.name === layout.name) {
       setActiveLayout(null);
       return;
     }
@@ -310,15 +319,12 @@ export default function Home() {
       top: `${top + height / 2 - bannerHeight / 2}px`, 
       height: `${bannerHeight}px`
     });
-    setActiveLayout(layout);
+    setActiveLayout({ layout, type });
   };
 
   const clearActiveLayout = () => {
     setActiveLayout(null);
   };
-
-  const activeLayoutIsBlog = activeLayout && blogLayouts.find(l => l.name === activeLayout.name);
-  const activeLayoutIsPost = activeLayout && postLayouts.find(l => l.name === activeLayout.name);
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -343,7 +349,7 @@ export default function Home() {
                 key={layout.name}
                 className="flex flex-col items-center gap-4"
                 onClick={(e) =>
-                  handleLayoutClick(layout, e.currentTarget as HTMLDivElement)
+                  handleLayoutClick(layout, 'blog', e.currentTarget as HTMLDivElement)
                 }
               >
                 <h3 className="text-xl font-semibold tracking-tight">
@@ -361,9 +367,9 @@ export default function Home() {
               </div>
             ))}
           </div>
-          {activeLayout && activeLayoutIsBlog && (
+          {activeLayout && activeLayout.type === 'blog' && (
               <PreviewBanner
-                layout={activeLayout}
+                layout={activeLayout.layout}
                 style={bannerStyle}
                 onClose={clearActiveLayout}
               />
@@ -391,7 +397,7 @@ export default function Home() {
                 key={layout.name}
                 className="flex flex-col items-center gap-4"
                 onClick={(e) =>
-                  handleLayoutClick(layout, e.currentTarget as HTMLDivElement)
+                  handleLayoutClick(layout, 'post', e.currentTarget as HTMLDivElement)
                 }
               >
                 <h3 className="text-xl font-semibold tracking-tight">
@@ -407,9 +413,9 @@ export default function Home() {
               </div>
             ))}
           </div>
-          {activeLayout && activeLayoutIsPost && (
+          {activeLayout && activeLayout.type === 'post' && (
               <PreviewBanner
-                layout={activeLayout}
+                layout={activeLayout.layout}
                 style={bannerStyle}
                 onClose={clearActiveLayout}
               />
